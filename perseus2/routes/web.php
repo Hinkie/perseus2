@@ -19,4 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/alunos', 'AlunoController@index');
+Route::get('/alunos', 'AlunoController@index')->middleware('auth');

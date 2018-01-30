@@ -17,7 +17,6 @@ return [
     */
 
     'driver' => env('MAIL_DRIVER', 'smtp'),
-    //api = fb7094226c4e98d69f2d4a4ef36177e469564825
 
 
     /*
@@ -58,8 +57,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'admin@cnecsa.edu.br'),
+        'name' => env('MAIL_FROM_NAME', 'CNEC Santo Ângelo'),
     ],
 
     /*
