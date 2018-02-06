@@ -252,6 +252,7 @@ input:focus {
     font-weight: 200;
     background-size: cover;
     background-position: center center;
+    background-color: #4b4276;
 }
 
 .sidebar .sidebar-wrapper {
@@ -274,7 +275,7 @@ input:focus {
     left: 0;
     background-size: cover;
     background-position: center center;
-    background-color: #594f8d;
+    /*background-color: #594f8d;*/
 }
 
 .sidebar .logo {
@@ -3377,7 +3378,7 @@ fieldset[disabled] .btn-neutral.active {
         height: 100%;
         width: 100%;
         position: absolute;
-        background-color: #282828;
+        background-color: #4b4276;
         display: block;
         content: "";
         z-index: 1;
