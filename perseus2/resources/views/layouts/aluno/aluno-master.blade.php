@@ -112,7 +112,7 @@
 	                        <li class="dropdown">
 	                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	                                    <p>
-											{{strtoupper($aluno->nome)}}
+											{{ucwords($aluno->nome)}}
 											<b class="caret"></b>
 										</p>
 	                              </a>

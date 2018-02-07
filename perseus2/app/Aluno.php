@@ -14,9 +14,8 @@ class Aluno extends Model
         return $this->belongsTo('App\Teacher','teacher_id');
     }
     
-    public function usuario() {
-        
-        return $this->hasOne('App\User','id','user_id');
-    
+    public function usuario() 
+    {
+        return $this->hasOne('App\User','id','user_id');  
     }
 }

@@ -27,13 +27,41 @@ class LoginController extends Controller
      */
     // protected $redirectTo = '/home';
 
+    public function username()
+    {
+        return 'username';
+    }
+
     public function authenticated($request , $user)
     {
-        if($user->role->name == 'aluno'){
+        if($user->role->name == 'admin') 
+        {
+            
+            return redirect()->route('homeAdmin');
+
+        }
+
+        if($user->role->name == 'funcionario') 
+        {
+            
+            return redirect()->route('homeFuncionario');
+
+        }
+
+        if($user->role->name == 'professor') 
+        {
+            
+            return redirect()->route('homeProfessor');
+
+        }
+
+        if($user->role->name == 'aluno') 
+        {
             
             return redirect()->route('homeAluno');
 
         }
+
     }
 
     /**

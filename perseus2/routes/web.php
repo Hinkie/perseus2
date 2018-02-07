@@ -15,10 +15,14 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/teste', function () {
+    return view('layouts.teste');
+});
+
 //Grupo de rotas referentes aos admins.
 Route::group(['middleware' => ['auth','roles:admin']], function () {
     
-    Route::get('/admin/funcionarios', 'AdminController@funcionarios')->name('homeadmin');
+    Route::get('/admin/funcionarios', 'AdminController@funcionarios')->name('homeAdmin');
     Route::get('/admin/alunos', 'AdminController@alunos');
     Route::get('/admin/professores', 'AdminController@professores');
     Route::get('/admin/registrarFuncionario', 'AdminController@registrarFuncionario');

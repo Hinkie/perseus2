@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Aluno extends Migration
+class CreateStatus extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class Aluno extends Migration
      */
     public function up()
     {
-        Schema::create('alunos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nome');
-            $table->integer('teacher_id');
-        });
+        Schema::create('status', function (Blueprint $table) {
+               
+               $table->increments('id');
+               $table->string('nome');
+    }); 
     }
+
 
     /**
      * Reverse the migrations.
@@ -27,6 +28,6 @@ class Aluno extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aluno');
+        Schema::dropIfExists('status');
     }
 }
