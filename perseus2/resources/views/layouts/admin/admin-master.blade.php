@@ -18,6 +18,10 @@
 
     <!--  Light Bootstrap Table core CSS    -->
     <link href="{{ asset('css/light-bootstrap-dashboard.css?v=1.4.0') }}" rel="stylesheet">
+   
+    {{-- Semantic UI CDN --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
@@ -53,22 +57,22 @@
                         <p>Professores</p>
                     </a>
                 </li>
-                <li {{{ (Request::is('admin/registrarFuncionario') ? 'class=active' : '') }}}>
-                    <a href="/admin/registrarFuncionario">
+                <li {{{ (Request::is('admin/cadastrarFuncionario') ? 'class=active' : '') }}}>
+                    <a href="/admin/cadastrarFuncionario">
                         <i class="pe-7s-bookmarks"></i>
-                        <p>Registrar Funcionario</p>
+                        <p>cadastrar Funcionario</p>
                     </a>
                 </li>
-                <li {{{ (Request::is('admin/registrarAluno') ? 'class=active' : '') }}}>
-                    <a href="/admin/registrarAluno">
+                <li {{{ (Request::is('admin/cadastrarAluno') ? 'class=active' : '') }}}>
+                    <a href="/admin/cadastrarAluno">
                         <i class="pe-7s-users"></i>
-                        <p>Registrar Aluno</p>
+                        <p>cadastrar Aluno</p>
                     </a>
                 </li>
-                <li {{{ (Request::is('admin/registrarProfessor') ? 'class=active' : '') }}}>
-                    <a href="/admin/registrarProfessor">
+                <li {{{ (Request::is('admin/cadastrarProfessor') ? 'class=active' : '') }}}>
+                    <a href="/admin/cadastrarProfessor">
                         <i class="pe-7s-add-user"></i>
-                        <p>Registrar Professor</p>
+                        <p>cadastrar Professor</p>
                     </a>
                 </li>
                 <li {{{ (Request::is('admin/memorandos') ? 'class=active' : '') }}}>
@@ -135,10 +139,8 @@
             </div>
         </nav>
 
-        <div class="content">
-            <div class="container-fluid">
+        <div class="content">         
                 @yield('conteudo')  
-            </div>
         </div>
     </div>
 </div>
@@ -147,11 +149,12 @@
     <!--   Core JS Files   -->
     <script src="{{ asset('js/jquery.3.2.1.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 	<script src="{{ asset('js/light-bootstrap-dashboard.js?v=1.4.0') }}" type="text/javascript"></script>
 
-	<!-- Light Bootstrap Table DEMO methods -->
+	<!-- Light Bootstrap Table DEMO methods e funcoes usadas  -->
 	<script src="{{ asset('js/demo.js') }}" type="text/javascript"></script>
 
 	<script type="text/javascript">

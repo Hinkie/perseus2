@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->integer('role_id');
+            $table->boolean('ativo')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });

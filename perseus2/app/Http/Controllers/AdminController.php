@@ -4,22 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Funcionario;
+use App\Funcao;
+use App\Professor;
 use App\Aluno;
 
 class AdminController extends Controller
 {
     public function alunos() 
     { 	
-	    $alunos = Aluno::orderBy('nome', 'DSC')->get();
+	    // $alunos = Aluno::orderBy('nome', 'DSC')->get();
+
+    	$alunos = Aluno::paginate(1);
 
 	    return view('layouts.admin.admin-alunos', compact('alunos'));
     }
 	
 	public function funcionarios() 
 	{ 	
-		$alunos = Aluno::orderBy('nome', 'DSC')->get();
+		$funcionarios = Funcionario::orderBy('nome', 'DSC')->get();
 
-		return view('layouts.admin.admin-funcionarios', compact('alunos'));
+		return view('layouts.admin.admin-funcionarios', compact('funcionarios'));
 	}
 	
 	public function professores() 
@@ -29,25 +34,25 @@ class AdminController extends Controller
 		return view('layouts.admin.admin-professores', compact('alunos'));
 	}
 	
-	public function registrarAluno() 
+	public function cadastrarAluno() 
 	{ 	
 		$alunos = Aluno::orderBy('nome', 'DSC')->get();
 
-		return view('layouts.admin.admin-registrarAluno', compact('alunos'));
+		return view('layouts.admin.admin-cadastrarAluno', compact('alunos'));
 	}
 	
-	public function registrarFuncionario() 
+	public function cadastrarFuncionario() 
 	{ 	
-		$alunos = Aluno::orderBy('nome', 'DSC')->get();
+		$funcoes = Funcao::all();
 
-		return view('layouts.admin.admin-registrarFuncionario', compact('alunos'));
+		return view('layouts.admin.admin-cadastrarFuncionario', compact('funcoes'));
 	}
 	
-	public function registrarProfessor() 
+	public function cadastrarProfessor() 
 	{ 	
 		$alunos = Aluno::orderBy('nome', 'DSC')->get();
 
-		return view('layouts.admin.admin-registrarProfessor', compact('alunos'));
+		return view('layouts.admin.admin-cadastrarProfessor', compact('alunos'));
 	}
 	
 	public function memorandos() 

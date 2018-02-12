@@ -22,7 +22,7 @@ class CreateEndereco extends Migration
                $table->string('bairro');
                $table->string('cidade');
                $table->string('UF',2);
-               $table->string('cep',8);
+               $table->string('cep',10);
                
            });    
     }

@@ -9,88 +9,50 @@
 </head>
 <body>
      <div class="ui container"></div>
-           <div class="ui four item fluid tabs menu"><a data-tab="flip up" class="item active">Top</a><a data-tab="flip left" class="item">Left</a><a data-tab="flip right" class="item">Right</a><a data-tab="flip down" class="item">Bottom</a></div>
-           <div class="ui two column centered grid">
-             <div class="column">
-               <div class="ui cube shape">
-                 <div class="sides">
-                   <div class="side">
-                     <div class="content">
-                       <div class="center">1</div>
-                     </div>
-                   </div>
-                   <div class="side">
-                     <div class="content">
-                       <div class="center">2</div>
-                     </div>
-                   </div>
-                   <div class="side">
-                     <div class="content">
-                       <div class="center">3</div>
-                     </div>
-                   </div>
-                   <div class="side">
-                     <div class="content">
-                       <div class="left">4</div>
-                     </div>
-                   </div>
-                   <div class="side active">
-                     <div class="content">
-                       <div class="center">5</div>
-                     </div>
-                   </div>
-                   <div class="side">
-                     <div class="content">
-                       <div class="center">6</div>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
+          <table class="ui celled table">
+            <thead>
+              <tr><th>Header</th>
+              <th>Header</th>
+              <th>Header</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="ui ribbon label">First</div>
+                </td>
+                <td>Cell</td>
+                <td>Cell</td>
+              </tr>
+              <tr>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+              </tr>
+              <tr>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr><th colspan="3">
+                <div class="ui right floated pagination menu">
+                  <a class="icon item">
+                    <i class="left chevron icon"></i>
+                  </a>
+                  <a class="item">1</a>
+                  <a class="item">2</a>
+                  <a class="item">3</a>
+                  <a class="item">4</a>
+                  <a class="icon item">
+                    <i class="right chevron icon"></i>
+                  </a>
+                </div>
+              </th>
+            </tr></tfoot>
+          </table>
+      </div>
 </body>
-<script type="text/javascript">
-  $(function(){
-    
-    var
-        $outerSquare = $('.cube'),
-      $menus     = $('a.item'),
-      $innerSquare = $('.center'),
-      $menuParent = $menus.parent(),
-      $box       = $('.shape')
-      ;
-    
-    $outerSquare
-     .click('$flip', function() {
-      $box.shape('flip up');
-      })
-  ;
-  $menus.detach();
-    $menus
-      .click( '$menus', function() {
-          $(this)
-           .addClass('active')
-            .siblings('.item')
-              .removeClass('active');
-    
-      })
-  ;
-  $menuParent.append( $menus );
-    
-    $menus.on('click', function(attr) {
-      var tabId = $(this).attr('data-tab');
-      $box.shape(tabId);
-    })
-  ;
-    
-    $innerSquare
-         .mouseover('$flip', function() {
-      $box.shape('flip left');
-      })
-    ;
-    
-    
-  });
-</script>
+
 
 </html>

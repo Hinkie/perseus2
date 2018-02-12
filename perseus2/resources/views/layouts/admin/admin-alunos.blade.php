@@ -1,7 +1,16 @@
-@extends('layouts.admin.admin-master')
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ejfoeiufj</title>
+</head>
+<body>
+	<div class="container">
+	    @foreach ($alunos as $aluno)
+	        <h1>{{ $aluno->nome }}</h1>
+	    @endforeach
+	</div>
 
-@section('conteudo')
-   @foreach ($alunos as $aluno)
-		{{$aluno->nome}}</br>	
-   @endforeach
-@endsection
+	<a href="/admin/alunos?page=1">teste</a>
+
+</body>
+</html>
