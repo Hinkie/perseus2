@@ -18,7 +18,7 @@
 
     <!--  Light Bootstrap Table core CSS    -->
     <link href="{{ asset('css/light-bootstrap-dashboard.css?v=1.4.0') }}" rel="stylesheet">
-   
+
     {{-- Semantic UI CDN --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
 
@@ -156,6 +156,9 @@
 
 	<!-- Light Bootstrap Table DEMO methods e funcoes usadas  -->
 	<script src="{{ asset('js/demo.js') }}" type="text/javascript"></script>
+
+    {{-- Datatables --}}
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 
 	<script type="text/javascript">
     	$(document).ready(function(){

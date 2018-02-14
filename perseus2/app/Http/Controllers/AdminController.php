@@ -9,6 +9,7 @@ use App\Funcao;
 use App\Professor;
 use App\Aluno;
 
+
 class AdminController extends Controller
 {
     public function alunos() 
@@ -24,7 +25,7 @@ class AdminController extends Controller
 	{ 	
 		$funcionarios = Funcionario::orderBy('nome', 'DSC')->get();
 
-		return view('layouts.admin.admin-funcionarios', compact('funcionarios'));
+		 return view('layouts.admin.admin-funcionarios', compact('funcionarios'));
 	}
 	
 	public function professores() 
