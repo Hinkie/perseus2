@@ -2,20 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use \App\Funcionario;
 use \App\Endereco;
 use \App\User;
 use Hash;
+use DB;
 
 class FuncionarioController extends Controller
 {
+
+	public function search() 
+	{	
+
+		$busca = request('busca');
+
+		$funcionarios = Funcionario::where('nome','LIKE',"%{$busca}%")
+						->orWhere('sobrenome','LIKE',"%{$busca}%")->get();
+
+		if(Auth::user()->role->name == 'admin') 
+		{
+		    
+		    return view('layouts.admin.admin-funcionariosResultado', compact('funcionarios'));
+
+		}
+
+		if(Auth::user()->role->name ==  'funcionario') 
+		{
+		    
+		    return redirect()->route('homeFuncionario');
+
+		}
+
+
+		
+		
+	}
+	
 	// Cria um usuario
 	// Cria um endereco
 	// Criar um funcionario usando os ids do usuario e endereco criados
 	public function store() 
 	{	
-			
+		
 		$user = new \App\User;
 
 		$this->validate(request(),[	

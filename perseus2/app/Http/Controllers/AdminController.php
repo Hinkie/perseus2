@@ -25,7 +25,12 @@ class AdminController extends Controller
 	{ 	
 		$funcionarios = Funcionario::orderBy('nome', 'DSC')->get();
 
-		 return view('layouts.admin.admin-funcionarios', compact('funcionarios'));
+		return view('layouts.admin.admin-funcionarios', compact('funcionarios'));
+	}
+
+	public function funcionario(Funcionario $funcionario) 
+	{	
+		return view('layouts.admin.admin-funcionario', compact('funcionario'));
 	}
 	
 	public function professores() 

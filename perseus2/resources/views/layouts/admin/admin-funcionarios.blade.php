@@ -1,6 +1,18 @@
 @extends('layouts.admin.admin-master')
 
 @section('conteudo')
+
+<form action="/admin/funcionarios/busca" method="POST" role="search">
+    {{ csrf_field() }}
+    <div class="ui input">
+        <input type="text" class="form-control" name="busca"
+            placeholder="Pesquisar Funcionário"> <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+    </div>
+</form>
    <table class="ui celled table">
     <thead>
         <tr>

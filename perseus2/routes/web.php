@@ -13,6 +13,7 @@
 
 Auth::routes();
 
+//Redireciona para a home de cada role 
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/teste', function () {
@@ -26,6 +27,7 @@ Route::group(['middleware' => ['auth','roles:admin']], function () {
     
     Route::get('/admin', function () { return redirect('/admin/funcionarios');});
     Route::get('/admin/funcionarios', 'AdminController@funcionarios')->name('homeAdmin');
+    Route::get('/admin/funcionarios/{funcionario}', 'AdminController@funcionario');
     Route::get('/admin/alunos', 'AdminController@alunos');
     Route::get('/admin/professores', 'AdminController@professores');
     Route::get('/admin/cadastrarFuncionario', 'AdminController@cadastrarFuncionario');
@@ -35,6 +37,7 @@ Route::group(['middleware' => ['auth','roles:admin']], function () {
     Route::get('/admin/telefones', 'AdminController@telefones');
     Route::get('/admin/relatorios', 'AdminController@relatorios');
 
+    Route::post('/admin/funcionarios/busca', 'FuncionarioController@search');
     Route::post('/admin/funcionario/add', 'FuncionarioController@store');
 
 });
@@ -53,4 +56,5 @@ Route::group(['middleware' => ['auth','roles:aluno']], function () {
     Route::get('/aluno/contato', 'AlunoController@contato');
 
 });
+
 
