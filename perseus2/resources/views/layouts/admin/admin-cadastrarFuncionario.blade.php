@@ -2,7 +2,7 @@
 @section('conteudo')
 
 	<div class="container">
-		<form method="POST" action="/admin/funcionario/add">
+		<form method="POST" action="/admin/funcionario">
 			{{ csrf_field() }}
 			<div class="form-row">
 				<div class="form-group col-md-6 {{ $errors->has('nome') ? ' has-error' : '' }}">
@@ -37,8 +37,8 @@
 					<input type="text"  class="form-control" id="cpf"   value="{{ old('cpf') }}" name="cpf" required onkeypress="mascara(this, '#########-##')">
 				</div>
 				<div class="form-group col-md-2 {{ $errors->has('naturalidade') ? ' has-error' : '' }}">
-					<label>Naturalidade</label>
-					<input type="text"  class="form-control" id="naturalidade"   value="{{ old('naturalidade') }}" name="naturalidade" >
+					<label>Naturalidade*</label>
+					<input type="text"  class="form-control" id="naturalidade"   value="{{ old('naturalidade') }}" name="naturalidade" required >
 				</div>
 				<div class="form-group col-md-2 {{ $errors->has('estado_civil_id') ? ' has-error' : '' }}">
 					<label>Estado Civil*</label>
@@ -130,11 +130,11 @@
 				</div>
 				<div class="form-group col-md-3 {{ $errors->has('password') ? ' has-error' : '' }}">
 					<label>Senha*</label>
-					<input type="text"  class="form-control" id="password"  name="password"  value="{{ old('password') }}" required>
+					<input type="password"  class="form-control" id="password"  name="password"  value="{{ old('password') }}" required>
 				</div>
 				<div class="form-group col-md-3 {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
 					<label>Confirmação da senha*</label>
-					<input type="text"  class="form-control" id="password_confirmation"  name="password_confirmation"  value="{{ old('password_confirmation') }}" required>
+					<input type="password"  class="form-control" id="password_confirmation"  name="password_confirmation"  value="{{ old('password_confirmation') }}" required>
 				</div>
 				<div class="form-group col-md-12">
 			        <p>*=Campos Obrigatórios</p>
@@ -153,6 +153,9 @@
 				</div>		
 			</div>				
 		</form>
+		
 	</div>
+
+	@include('flash::message')
 
 @endsection

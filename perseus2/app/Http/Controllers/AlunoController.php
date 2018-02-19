@@ -87,4 +87,6 @@ class AlunoController extends Controller
         return view('layouts.aluno.aluno-contato', compact('aluno'));
     }
 
+    // SELECT * FROM `funcionarios` WHERE YEAR (created_at) = 2018 ORDER BY id DESC
+
 }

@@ -48,5 +48,5 @@
       </tbody>
     </table>
 @endif
-  
+
 @endsection

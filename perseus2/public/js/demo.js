@@ -30,6 +30,8 @@
      }, 1);
  }
 
+//Esconde flash message depois de 5 segundos
+$('div.alert').not('.alert-important').delay(5000).fadeOut(350);
 
 
 type = ['','info','success','warning','danger'];

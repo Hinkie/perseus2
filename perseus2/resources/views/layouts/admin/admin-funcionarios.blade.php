@@ -33,7 +33,7 @@
        @else
           <tr>
        @endif
-                <td>{{$funcionario->nome}} {{$funcionario->sobrenome}}</td>
+                <td><a href="/admin/funcionarios/{{$funcionario->id}}">{{$funcionario->nome}} {{$funcionario->sobrenome}}</a></td>
                 <td>{{$funcionario->funcao->nome}}</td>
                 <td>{{$funcionario->email}}</td>
                 <td>{{$funcionario->fixo}}</td> 
@@ -43,5 +43,7 @@
         @endforeach 
     </tbody>
 </table>
+
+{{ $funcionarios->links('layouts.paginacao') }}
 
 @endsection

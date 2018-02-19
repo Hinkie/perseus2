@@ -8,6 +8,8 @@
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+input[type="text"]:disabled{background-color:#EDEFF5;}
+
 input[type="text"],
 input[type="password"],
 select.form-control {
