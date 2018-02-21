@@ -125,6 +125,6 @@
 			</div>				
 	</div>
 
-	@include('flash::message')
+		@include('flash::message')
 
 @endsection

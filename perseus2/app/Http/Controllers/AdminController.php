@@ -9,14 +9,14 @@ use App\Funcao;
 use App\EstadoCivil;
 use App\Professor;
 use App\Aluno;
-
+use App\Titulo;
+use App\Curso;
 
 class AdminController extends Controller
 {	
 
 	public function teste() 
 	{ 	
-
 		$funcoes = Funcao::all();
 
 		flash('Cadastro efetuado com sucesso');
@@ -27,7 +27,6 @@ class AdminController extends Controller
 	//Funcionarios
     public function cadastrarFuncionario() 
     { 	
-
     	$funcoes = Funcao::all();
 
     	return view('layouts.admin.admin-cadastrarFuncionario', compact('funcoes'));
@@ -47,14 +46,12 @@ class AdminController extends Controller
 
 	public function buscaFuncionario() 
 	{	
-		
 		$busca = request('busca');
 
 		$funcionarios = Funcionario::where('nome','LIKE',"%{$busca}%")
 						->orWhere('sobrenome','LIKE',"%{$busca}%")->paginate(1);
 			
 		return view('layouts.admin.admin-funcionariosResultado', compact('funcionarios'));
-	
 	}
 
 	public function editarFuncionario(Funcionario $funcionario) 
@@ -66,56 +63,77 @@ class AdminController extends Controller
 		return view('layouts.admin.admin-editarFuncionario', compact('funcionario','funcoes','estado_civil'));
 	}
 	
-	//Alunos
-
-	public function cadastrarAluno() 
-	{ 	
-		$alunos = Aluno::orderBy('nome', 'DSC')->get();
-
-		return view('layouts.admin.admin-cadastrarAluno', compact('alunos'));
-	}
-
-    public function alunos() 
+	//Professores
+    public function cadastrarProfessor() 
     { 	
-	    // $alunos = Aluno::orderBy('nome', 'DSC')->get();
+    	$titulo = Titulo::all();
 
-    	$alunos = Aluno::paginate(1);
-
-	    return view('layouts.admin.admin-alunos', compact('alunos'));
+    	return view('layouts.admin.admin-cadastrarProfessor', compact('titulos'));
     }
 
 	public function professores() 
 	{ 	
-		$alunos = Aluno::orderBy('nome', 'DSC')->get();
+		$professores = Professor::orderBy('nome', 'DSC')->paginate(25);
 
-		return view('layouts.admin.admin-professores', compact('alunos'));
+		return view('layouts.admin.admin-professores', compact('professores'));
 	}
-	
-	public function cadastrarProfessor() 
-	{ 	
-		$alunos = Aluno::orderBy('nome', 'DSC')->get();
 
-		return view('layouts.admin.admin-cadastrarProfessor', compact('alunos'));
+	public function professor(Professor $professor) 
+	{	
+		return view('layouts.admin.admin-professor', compact('professor'));
 	}
-	
-	public function memorandos() 
-	{ 	
-		$alunos = Aluno::orderBy('nome', 'DSC')->get();
 
-		return view('layouts.admin.admin-memorandos', compact('alunos'));
+	public function buscaProfessor() 
+	{	
+		$busca = request('busca');
+
+		$professores = Professor::where('nome','LIKE',"%{$busca}%")
+						->orWhere('sobrenome','LIKE',"%{$busca}%")->paginate(1);
+			
+		return view('layouts.admin.admin-professoresResultado', compact('professores'));
 	}
-	
-	public function telefones() 
-	{ 	
-		$alunos = Aluno::orderBy('nome', 'DSC')->get();
 
-		return view('layouts.admin.admin-telefones', compact('alunos'));
+	public function editarProfessor(Professor $professor) 
+	{	
+		$titulos = Titulo::all();
+
+		$estado_civil = EstadoCivil::all();
+
+		return view('layouts.admin.admin-editarProfessor', compact('professor','estado_civil','titulos'));
 	}
-	
-	public function relatorios() 
-	{ 	
-		$alunos = Aluno::orderBy('nome', 'DSC')->get();
 
-		return view('layouts.admin.admin-relatorios', compact('alunos'));
-	}    
+	//Alunos
+  	public function cadastrarAluno() 
+   { 	
+   	return view('layouts.admin.admin-cadastrarAluno');
+   }
+
+   	public function alunos() 
+   	{ 	
+   		$alunos = Aluno::orderBy('nome', 'DSC')->paginate(25);
+
+   		return view('layouts.admin.admin-alunos', compact('alunos'));
+   	}
+
+   	public function aluno(Aluno $aluno) 
+   	{	
+   		return view('layouts.admin.admin-aluno', compact('aluno'));
+   	}
+
+   	public function buscaAluno() 
+   	{		
+   		$busca = request('busca');
+
+   		$alunos = Aluno::where('nome','LIKE',"%{$busca}%")
+   						->orWhere('sobrenome','LIKE',"%{$busca}%")->paginate(1);
+   			
+   		return view('layouts.admin.admin-funcionariosResultado', compact('alunos'));
+   	}
+
+   	public function editarAluno(Aluno $aluno) 
+   	{	
+   		$estado_civil = EstadoCivil::all();
+
+   		return view('layouts.admin.admin-editarAluno', compact('aluno','estado_civil'));
+   	}
 }

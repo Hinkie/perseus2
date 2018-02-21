@@ -12,4 +12,9 @@ class Status extends Model
     {
 		return $this->hasMany('App\Funcionario','status_id');
     }
+
+    public function professor() 
+    {
+		return $this->hasMany('App\Professor','status_id');
+    }
 }

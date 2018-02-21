@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFuncionario extends Migration
+class CreateAluno extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateFuncionario extends Migration
      */
     public function up()
     {
-        Schema::create('funcionarios', function (Blueprint $table) {
-           
+        Schema::create('alunos', function (Blueprint $table) {
+            
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('role_id')->default(2);
+            $table->integer('role_id')->default(3);
             $table->string('nome');
             $table->string('sobrenome');
             $table->string('data_nascimento',12);
@@ -30,12 +30,14 @@ class CreateFuncionario extends Migration
             $table->string('nome_mae');
             $table->string('nome_pai')->nullable();
             $table->integer('estado_civil_id');
-            $table->integer('funcao_id');
+            $table->integer('curso_id');
             $table->integer('endereco_id');
             $table->string('fixo',30)->nullable();
             $table->string('celular',30)->nullable();
             $table->string('email')->unique();
-            $table->integer('status_id')->default(3);
+            $table->integer('status_aluno_id')->default(3);
+            $table->float('desconto')->default(0);
+            $table->integer('atividades_extra')->default(0);
             $table->timestamps();
 
         });
@@ -48,6 +50,6 @@ class CreateFuncionario extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('funcionarios');
+        Schema::dropIfExists('aluno');
     }
 }

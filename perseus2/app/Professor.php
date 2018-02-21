@@ -4,8 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Aluno extends Model
+class Professor extends Model
 {
+    protected $table = 'professores';
+
     protected $guarded = [];
 
     public function usuario() 
@@ -23,13 +25,13 @@ class Aluno extends Model
         return $this->hasOne('App\Endereco','id','endereco_id');  
     }
 
-    public function status_aluno() 
+    public function status() 
     {
-        return $this->belongsTo('App\StatusAluno','status_id');
+        return $this->belongsTo('App\Status','status_id');
     }
 
-    public function curso() 
+    public function titulo() 
     {
-        return $this->belongsTo('App\Curso','curso_id');
+        return $this->belongsTo('App\Titulo','titulo_id');
     }
 }

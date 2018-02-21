@@ -12,4 +12,14 @@ class EstadoCivil extends Model
         
          return $this->hasMany('App\Funcionario','estado_civil_id');
     }
+    
+    public function professor() 
+    {
+		return $this->hasMany('App\Professor','estado_civil_id');
+    }
+
+    public function aluno() 
+    {
+		return $this->hasMany('App\Aluno','estado_civil_id');
+    }
 }

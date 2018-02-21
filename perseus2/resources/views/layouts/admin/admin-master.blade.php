@@ -45,16 +45,16 @@
                         <i class="pe-7s-id"></i>
                         <p>Funcionários</p>
                     </a>
-                <li {{{ (Request::is('admin/alunos') ? 'class=active' : '') }}}>
-                    <a href="/admin/alunos">
-                        <i class="pe-7s-study"></i>
-                        <p>Alunos</p>
-                    </a>
-                </li>
                 <li {{{ (Request::is('admin/professores') ? 'class=active' : '') }}}>
                     <a href="/admin/professores">
                         <i class="pe-7s-user"></i>
                         <p>Professores</p>
+                    </a>
+                </li>
+                <li {{{ (Request::is('admin/alunos') ? 'class=active' : '') }}}>
+                    <a href="/admin/alunos">
+                        <i class="pe-7s-study"></i>
+                        <p>Alunos</p>
                     </a>
                 </li>
                 <li {{{ (Request::is('admin/cadastrarFuncionario') ? 'class=active' : '') }}}>
@@ -63,16 +63,16 @@
                         <p>cadastrar Funcionario</p>
                     </a>
                 </li>
-                <li {{{ (Request::is('admin/cadastrarAluno') ? 'class=active' : '') }}}>
-                    <a href="/admin/cadastrarAluno">
-                        <i class="pe-7s-users"></i>
-                        <p>cadastrar Aluno</p>
-                    </a>
-                </li>
                 <li {{{ (Request::is('admin/cadastrarProfessor') ? 'class=active' : '') }}}>
                     <a href="/admin/cadastrarProfessor">
                         <i class="pe-7s-add-user"></i>
                         <p>cadastrar Professor</p>
+                    </a>
+                </li>
+                <li {{{ (Request::is('admin/cadastrarAluno') ? 'class=active' : '') }}}>
+                    <a href="/admin/cadastrarAluno">
+                        <i class="pe-7s-users"></i>
+                        <p>cadastrar Aluno</p>
                     </a>
                 </li>
                 <li {{{ (Request::is('admin/memorandos') ? 'class=active' : '') }}}>
