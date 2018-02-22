@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Funcionario;
 use App\Funcao;
+use App\Status;
+use App\StatusAluno;
 use App\EstadoCivil;
 use App\Professor;
 use App\Aluno;
@@ -34,7 +36,7 @@ class AdminController extends Controller
 
 	public function funcionarios() 
 	{ 	
-		$funcionarios = Funcionario::orderBy('nome', 'DSC')->paginate(25);
+		$funcionarios = Funcionario::orderBy('nome', 'ASC')->paginate(25);
 
 		return view('layouts.admin.admin-funcionarios', compact('funcionarios'));
 	}
@@ -49,7 +51,7 @@ class AdminController extends Controller
 		$busca = request('busca');
 
 		$funcionarios = Funcionario::where('nome','LIKE',"%{$busca}%")
-						->orWhere('sobrenome','LIKE',"%{$busca}%")->paginate(1);
+						->orWhere('sobrenome','LIKE',"%{$busca}%")->get();
 			
 		return view('layouts.admin.admin-funcionariosResultado', compact('funcionarios'));
 	}
@@ -58,9 +60,11 @@ class AdminController extends Controller
 	{	
 		$funcoes = Funcao::all();
 
+		$status = Status::all();
+
 		$estado_civil = EstadoCivil::all();
 
-		return view('layouts.admin.admin-editarFuncionario', compact('funcionario','funcoes','estado_civil'));
+		return view('layouts.admin.admin-editarFuncionario', compact('funcionario','funcoes','estado_civil','status'));
 	}
 	
 	//Professores
@@ -73,7 +77,7 @@ class AdminController extends Controller
 
 	public function professores() 
 	{ 	
-		$professores = Professor::orderBy('nome', 'DSC')->paginate(25);
+		$professores = Professor::orderBy('nome', 'ASC')->paginate(25);
 
 		return view('layouts.admin.admin-professores', compact('professores'));
 	}
@@ -88,7 +92,7 @@ class AdminController extends Controller
 		$busca = request('busca');
 
 		$professores = Professor::where('nome','LIKE',"%{$busca}%")
-						->orWhere('sobrenome','LIKE',"%{$busca}%")->paginate(1);
+						->orWhere('sobrenome','LIKE',"%{$busca}%")->get();
 			
 		return view('layouts.admin.admin-professoresResultado', compact('professores'));
 	}
@@ -97,20 +101,24 @@ class AdminController extends Controller
 	{	
 		$titulos = Titulo::all();
 
+		$status = Status::all();
+
 		$estado_civil = EstadoCivil::all();
 
-		return view('layouts.admin.admin-editarProfessor', compact('professor','estado_civil','titulos'));
+		return view('layouts.admin.admin-editarProfessor', compact('professor','estado_civil','titulos','status'));
 	}
 
 	//Alunos
   	public function cadastrarAluno() 
    { 	
-   	return view('layouts.admin.admin-cadastrarAluno');
+   	$cursos = Curso::orderBy('nome', 'ASC')->get();
+
+   	return view('layouts.admin.admin-cadastrarAluno',compact('cursos'));
    }
 
    	public function alunos() 
    	{ 	
-   		$alunos = Aluno::orderBy('nome', 'DSC')->paginate(25);
+   		$alunos = Aluno::orderBy('nome', 'ASC')->paginate(25);
 
    		return view('layouts.admin.admin-alunos', compact('alunos'));
    	}
@@ -125,15 +133,17 @@ class AdminController extends Controller
    		$busca = request('busca');
 
    		$alunos = Aluno::where('nome','LIKE',"%{$busca}%")
-   						->orWhere('sobrenome','LIKE',"%{$busca}%")->paginate(1);
+   						->orWhere('sobrenome','LIKE',"%{$busca}%")->get();
    			
    		return view('layouts.admin.admin-funcionariosResultado', compact('alunos'));
    	}
 
    	public function editarAluno(Aluno $aluno) 
    	{	
+   		$cursos = Curso::orderBy('nome', 'ASC')->get();
+   		
    		$estado_civil = EstadoCivil::all();
 
-   		return view('layouts.admin.admin-editarAluno', compact('aluno','estado_civil'));
+   		return view('layouts.admin.admin-editarAluno', compact('aluno','estado_civil','cursos'));
    	}
 }

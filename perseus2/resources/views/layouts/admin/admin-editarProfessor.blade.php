@@ -121,9 +121,21 @@
 			</div>	
 			{{-- Contato --}}
 			<div class="form-row">
-				<div class="form-group col-md-6 {{ $errors->has('email') ? ' has-error' : '' }}">
+				<div class="form-group col-md-3 {{ $errors->has('email') ? ' has-error' : '' }}">
 					<label>Email*</label>
 					<input type="text"  class="form-control" id="email"   value="{{ $professor->email }}" name="email" required>
+				</div>
+				<div class="form-group col-md-3 ">
+					<label>Status*</label>
+					<select class="form-control" id="status_id"  name="status_id"   value="{{ $professor->status->nome }}" required>
+						@foreach ($status as $status)
+							@if($status->id == $professor->status_id)
+								<option value="{{$status->id}}" selected>{{$status->nome}}</option>
+							@else
+								<option value="{{$status->id}}">{{$status->nome}}</option>
+							@endif	
+						@endforeach
+					</select>
 				</div>
 				<div class="form-group col-md-3 {{ $errors->has('fixo') ? ' has-error' : '' }}">
 					<label>Telefone fixo com DDD</label>
@@ -170,5 +182,8 @@
 			</div>				
 		</form>
 	</div>
+
+	
 	
 @endsection
+

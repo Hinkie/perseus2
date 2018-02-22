@@ -124,6 +124,7 @@ class FuncionarioController extends Controller
 			'nome_pai' => 'nullable|max:150|regex:/^[\pL\s\-]+$/u',
 			'estado_civil_id' => 'required|numeric',
 			'funcao_id' => 'required|numeric',
+			'status_id' => 'required|numeric',
 			'fixo' => 'nullable|required_without:celular|min:12|max:12|regex:/^[0-9]+[-]*[0-9]+[-]*[0-9]+$/u',
 			'celular' => 'nullable|required_without:fixo|min:13|max:13|regex:/^[0-9]+[-]*[0-9]+[-]*[0-9]+$/u',
 			'email' => 'required|email|min:7|max:150|unique:funcionarios,email,'.$funcionario->id
@@ -164,10 +165,12 @@ class FuncionarioController extends Controller
 			'nome_pai' => request('nome_pai'),
 			'estado_civil_id' => request('estado_civil_id'),
 			'funcao_id' => request('funcao_id'),
+			'status_id' => request('status_id'),
 			'endereco_id' => $funcionario->endereco_id,
 			'fixo' => request('fixo'),
 			'celular' => request('celular'),
 			'email' => request('email')
+		
 		]);
 	
 		flash('Edição efetuada com sucesso');

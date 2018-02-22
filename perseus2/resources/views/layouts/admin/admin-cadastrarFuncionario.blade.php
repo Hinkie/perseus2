@@ -78,7 +78,7 @@
 				</div>
 				<div class="form-group col-md-3 {{ $errors->has('complemento') ? ' has-error' : '' }}">
 					<label>Complemento</label>
-					<input type="text"  class="form-control" id="complemento"   value="{{ old('complemento') }}" name="complemento" required>
+					<input type="text"  class="form-control" id="complemento"   value="{{ old('complemento') }}" name="complemento" >
 				</div>	
 				<div class="form-group col-md-3 {{ $errors->has('bairro') ? ' has-error' : '' }}">
 					<label>Bairro*</label>

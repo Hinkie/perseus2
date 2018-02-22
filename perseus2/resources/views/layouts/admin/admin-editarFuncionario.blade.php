@@ -44,11 +44,11 @@
 				<div class="form-group col-md-2 {{ $errors->has('estado_civil_id') ? ' has-error' : '' }}">
 					<label>Estado Civil*</label>
 					<select class="form-control" id="estado_civil_id"  name="estado_civil_id" required>
-						@foreach ($estado_civil as $EC)
-							@if($EC->id == $funcionario->estado_civil_id)
-								<option value="{{$EC->id}}" selected>{{$EC->nome}}</option>
+						@foreach ($estado_civil as $estado_civil)
+							@if($estado_civil->id == $funcionario->estado_civil_id)
+								<option value="{{$estado_civil->id}}" selected>{{$estado_civil->nome}}</option>
 							@else
-								<option value="{{$EC->id}}">{{$EC->nome}}</option>
+								<option value="{{$estado_civil->id}}">{{$estado_civil->nome}}</option>
 							@endif	
 						@endforeach
 					</select>
@@ -105,6 +105,18 @@
 				<div class="form-group col-md-3 {{ $errors->has('cep') ? ' has-error' : '' }}">
 					<label>CEP*</label>
 					<input type="text"  class="form-control" id="cep"   value="{{ $funcionario->endereco->cep }}" name="cep" onkeypress="mascara(this, '#####-###')" required>
+				</div>
+				<div class="form-group col-md-3 ">
+					<label>Status*</label>
+					<select class="form-control" id="status_id"  name="status_id"   value="{{ $funcionario->status->nome }}" required>
+						@foreach ($status as $status)
+							@if($status->id == $funcionario->status_id)
+								<option value="{{$status->id}}" selected>{{$status->nome}}</option>
+							@else
+								<option value="{{$status->id}}">{{$status->nome}}</option>
+							@endif	
+						@endforeach
+					</select>
 				</div>
 			</div>	
 			{{-- Contato --}}

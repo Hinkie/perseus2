@@ -32,8 +32,8 @@
       @foreach ($funcionarios as $funcionario)
          @if ($funcionario->status_id == 1)
              <tr class="negative">
-         @elseif ($funcionario->status_id == 2)
-             <tr class="warning">
+         @elseif ($funcionario->status_id == 2 )
+             <tr class="hidden">
          @else
             <tr>
          @endif

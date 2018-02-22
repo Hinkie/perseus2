@@ -25,7 +25,7 @@ class Aluno extends Model
 
     public function status_aluno() 
     {
-        return $this->belongsTo('App\StatusAluno','status_id');
+        return $this->belongsTo('App\StatusAluno','status_aluno_id');
     }
 
     public function curso() 

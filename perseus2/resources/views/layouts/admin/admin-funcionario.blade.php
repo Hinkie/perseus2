@@ -77,7 +77,7 @@
 			<div class="form-row">
 				<div class="form-group col-md-5 ">
 					<label>Cidade</label>
-					<input type="text"  class="form-control" id="cidade"   value="{{ $funcionario->endereco->bairro }}" disabled name="cidade">
+					<input type="text"  class="form-control" id="cidade"   value="{{ $funcionario->endereco->cidade }}" disabled name="cidade">
 				</div>
 				<div class="form-group col-md-1  ">
 					<label>UF</label>
@@ -90,7 +90,11 @@
 			</div>	
 			{{-- Contato --}}
 			<div class="form-row">
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-3">
+					<label>Status</label>
+					<input type="text"  class="form-control" id="status_id"  name="status_id"  value="{{ $funcionario->status->nome  }}" disabled="">
+				</div>
+				<div class="form-group col-md-3">
 					<label>Email</label>
 					<input type="text"  class="form-control" id="email"   value="{{ $funcionario->email  }}" disabled name="email">
 				</div>

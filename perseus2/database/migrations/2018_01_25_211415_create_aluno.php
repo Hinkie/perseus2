@@ -17,7 +17,7 @@ class CreateAluno extends Migration
             
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('role_id')->default(3);
+            $table->integer('role_id')->default(4);
             $table->string('nome');
             $table->string('sobrenome');
             $table->string('data_nascimento',12);
@@ -35,7 +35,7 @@ class CreateAluno extends Migration
             $table->string('fixo',30)->nullable();
             $table->string('celular',30)->nullable();
             $table->string('email')->unique();
-            $table->integer('status_aluno_id')->default(3);
+            $table->integer('status_aluno_id')->default(4);
             $table->float('desconto')->default(0);
             $table->integer('atividades_extra')->default(0);
             $table->timestamps();

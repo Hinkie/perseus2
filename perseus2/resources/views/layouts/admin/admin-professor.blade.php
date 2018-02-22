@@ -77,7 +77,7 @@
 			<div class="form-row">
 				<div class="form-group col-md-5 ">
 					<label>Cidade</label>
-					<input type="text"  class="form-control" id="cidade"   value="{{ $professor->endereco->bairro }}" disabled name="cidade">
+					<input type="text"  class="form-control" id="cidade"   value="{{ $professor->endereco->cidade }}" disabled name="cidade">
 				</div>
 				<div class="form-group col-md-1  ">
 					<label>UF</label>
@@ -94,9 +94,13 @@
 			</div>	
 			{{-- Contato --}}
 			<div class="form-row">
-				<div class="form-group col-md-6">
+				<div class="form-group col-md-3">
 					<label>Email</label>
 					<input type="text"  class="form-control" id="email"   value="{{ $professor->email  }}" disabled name="email">
+				</div>
+				<div class="form-group col-md-3">
+					<label>Status</label>
+					<input type="text"  class="form-control" id="status_id"  name="status_id"  value="{{ $professor->status->nome  }}" disabled="">
 				</div>
 				<div class="form-group col-md-3">
 					<label>Telefone fixo com DDD</label>
@@ -118,6 +122,7 @@
 					<label>Usuario</label>
 					<input type="text"  class="form-control" id="userdisabled name"   value="{{ $professor->usuario->username }}" disabled name="userdisabled name">
 				</div>
+
 				<div class="form-group col-md-12">
 				    <a href="/admin/professores/editar/{{$professor->id}}">
 				        <button type="submit" class="btn btn-primary" >
