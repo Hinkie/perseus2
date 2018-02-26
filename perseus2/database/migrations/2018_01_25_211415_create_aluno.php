@@ -17,7 +17,6 @@ class CreateAluno extends Migration
             
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('role_id')->default(4);
             $table->string('nome');
             $table->string('sobrenome');
             $table->string('data_nascimento',12);

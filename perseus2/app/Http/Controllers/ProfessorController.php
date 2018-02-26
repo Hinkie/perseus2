@@ -55,6 +55,7 @@ class ProfessorController extends Controller
 		$result_user = User::create ([
 			'username' => request('username'),
 			'password' => Hash::make(request('password')),
+			'role_id' => 3
 		]);
 
 		$endereco = new \App\Endereco;

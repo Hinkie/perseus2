@@ -158,11 +158,11 @@
 				</div>
 				<div class="form-group col-md-3 {{ $errors->has('new_password') ? ' has-error' : '' }}">
 					<label>Nova senha</label>
-					<input type="text"  class="form-control" id="new_password"  name="new_password" >
+					<input type="password"  class="form-control" id="new_password"  name="new_password" >
 				</div>
 				<div class="form-group col-md-3 {{ $errors->has('new_password_confirmation') ? ' has-error' : '' }}">
 					<label>Confirmação nova senha</label>
-					<input type="text"  class="form-control" id="new_password_confirmation"  name="new_password_confirmation">
+					<input type="password"  class="form-control" id="new_password_confirmation"  name="new_password_confirmation">
 				</div>
 				<div class="form-group col-md-12">
 			        <p>*=Campos Obrigatórios</p>

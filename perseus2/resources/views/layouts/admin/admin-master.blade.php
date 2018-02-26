@@ -93,6 +93,19 @@
                        <p>Relatórios</p>
                    </a>
                 </li>
+                <li {{{ (Request::is('admin/ferramentas') ? 'class=active' : '') }}}>
+                    <a href="/admin/ferramentas">
+                        <i class="pe-7s-tools"></i>
+                        <p>Ferramentas</p>
+                    </a>
+                 </li>
+
+                 <li {{{ (Request::is('teste') ? 'class=active' : '') }}}>
+                     <a href="/teste">
+                         <i class="pe-7s-tools"></i>
+                         <p>Teste</p>
+                     </a>
+                  </li>
 				
             </ul>
     	</div>

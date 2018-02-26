@@ -124,7 +124,7 @@ class AlunoController extends Controller
             'nome_pai' => 'nullable|max:150|regex:/^[\pL\s\-]+$/u',
             'estado_civil_id' => 'required|numeric',
             'curso_id' => 'required|numeric',
-            'desconto' => 'nullable|min:1|max:100|size:3',
+            'desconto' => 'nullable|min:1|max:100',
             'fixo' => 'nullable|required_without:celular|min:12|max:12|regex:/^[0-9]+[-]*[0-9]+[-]*[0-9]+$/u',
             'celular' => 'nullable|required_without:fixo|min:13|max:13|regex:/^[0-9]+[-]*[0-9]+[-]*[0-9]+$/u',
             'email' => 'required|email|min:7|max:150|unique:funcionarios'
@@ -135,6 +135,7 @@ class AlunoController extends Controller
         $result_user = User::create ([
             'username' => request('username'),
             'password' => Hash::make(request('password')),
+            'role_id' => 4
         ]);
 
         $endereco = new \App\Endereco;
@@ -166,7 +167,7 @@ class AlunoController extends Controller
             'nome_pai' => request('nome_pai'),
             'estado_civil_id' => request('estado_civil_id'),
             'curso_id' => request('curso_id'),
-            'deconto' => request('deconto'),
+            'desconto' => request('desconto'),
             'endereco_id' => $result_endereco->id,
             'fixo' => request('fixo'),
             'celular' => request('celular'),
@@ -206,7 +207,7 @@ class AlunoController extends Controller
             'nome_pai' => 'nullable|max:150|regex:/^[\pL\s\-]+$/u',
             'estado_civil_id' => 'required|numeric',
             'curso_id' => 'required|numeric',
-            'desconto' => 'nullable|min:1|max:100|size:3',
+            'desconto' => 'nullable|min:1|max:100',
             'status_aluno_id' => 'required|numeric',
             'fixo' => 'nullable|required_without:celular|min:12|max:12|regex:/^[0-9]+[-]*[0-9]+[-]*[0-9]+$/u',
             'celular' => 'nullable|required_without:fixo|min:13|max:13|regex:/^[0-9]+[-]*[0-9]+[-]*[0-9]+$/u',
@@ -248,7 +249,7 @@ class AlunoController extends Controller
             'nome_pai' => request('nome_pai'),
             'estado_civil_id' => request('estado_civil_id'),
             'curso_id' => request('curso_id'),
-            'deconto' => request('deconto'),
+            'desconto' => request('desconto'),
             'status_aluno_id' => request('status_aluno_id'),
             'endereco_id' => $aluno->endereco_id,
             'fixo' => request('fixo'),
@@ -259,7 +260,7 @@ class AlunoController extends Controller
     
         flash('Edição efetuada com sucesso');
 
-        return redirect('/admin/funcionarios/'.$aluno->id);
+        return redirect('/admin/alunos/'.$aluno->id);
     
     }
 

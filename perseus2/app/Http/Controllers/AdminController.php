@@ -13,17 +13,15 @@ use App\Professor;
 use App\Aluno;
 use App\Titulo;
 use App\Curso;
+use DB;
 
 class AdminController extends Controller
 {	
 
 	public function teste() 
 	{ 	
-		$funcoes = Funcao::all();
-
-		flash('Cadastro efetuado com sucesso');
-
-		return view('layouts.admin.admin-cadastrarFuncionario', compact('funcoes'));
+	
+		return redirect()->route($funcao);
 	}
 
 	//Funcionarios
@@ -140,10 +138,12 @@ class AdminController extends Controller
 
    	public function editarAluno(Aluno $aluno) 
    	{	
+   		$status = StatusAluno::all();
+
    		$cursos = Curso::orderBy('nome', 'ASC')->get();
    		
    		$estado_civil = EstadoCivil::all();
 
-   		return view('layouts.admin.admin-editarAluno', compact('aluno','estado_civil','cursos'));
+   		return view('layouts.admin.admin-editarAluno', compact('aluno','estado_civil','cursos','status'));
    	}
 }
