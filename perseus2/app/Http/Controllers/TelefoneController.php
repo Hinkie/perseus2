@@ -15,6 +15,11 @@ class TelefoneController extends Controller
         return view('layouts.admin.admin-telefones', compact('telefones'));
     }
 
+    public function editarTelefone(Telefone $telefone) 
+    {    
+        return view('layouts.admin.admin-editarTelefone', compact('telefone'));
+    }
+
     public function store() 
     {	
     	
@@ -32,7 +37,7 @@ class TelefoneController extends Controller
     		'ramal' => request('ramal')
     	]);
 
-    	flash('Edição efetuada com sucesso');
+    	flash('Cadastro efetuado com sucesso');
     	//Redireciona para a pagina correspondendo ao role		
     	$funcao = Auth::user()->role->name;
 
@@ -40,7 +45,7 @@ class TelefoneController extends Controller
    
     }
 
-    public function update() 
+    public function update(Telefone $telefone) 
     {	
     	
     	$this->validate(request(),[	

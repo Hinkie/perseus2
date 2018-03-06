@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth','roles:admin']], function () {
     //Rotas GET das paginas referentes aos telefones, memorandos e relatorios
     Route::get('/admin/memorandos', 'AdminController@memorandos');
     Route::get('/admin/telefones', 'TelefoneController@telefones');
+    Route::get('/admin/telefones/editar/{telefone}', 'TelefoneController@editarTelefone');
     Route::get('/admin/relatorios', 'AdminController@relatorios');
     //Rotas POST  das paginas referentes aos funcionarios
     Route::post('/admin/funcionarios/busca', 'AdminController@buscaFuncionario');
@@ -41,11 +42,12 @@ Route::group(['middleware' => ['auth','roles:admin']], function () {
     Route::post('/admin/alunos/busca', 'AdminController@buscaAluno');
     Route::post('/admin/aluno', 'AlunoController@store');
     //Rotas POST das paginas referentes aos telefones, memorandos e relatorios
-    Route::post('/telefones', 'TelefoneController@store');
+    Route::post('/admin/telefones', 'TelefoneController@store');
     //Rotas PATCH para a edição dos modelos
     Route::patch('/admin/funcionarios/editar/{funcionario}', 'FuncionarioController@update');
     Route::patch('/admin/professores/editar/{professor}', 'ProfessorController@update');
     Route::patch('/admin/alunos/editar/{aluno}', 'AlunoController@update');
+    Route::patch('/admin/telefones/editar/{telefone}', 'TelefoneController@update');
 
 });
 

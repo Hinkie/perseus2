@@ -22,6 +22,7 @@ class AdminController extends Controller
 	{ 	
 	
 		return redirect()->route($funcao);
+        //aaaaa
 	}
 
 	//Funcionarios
