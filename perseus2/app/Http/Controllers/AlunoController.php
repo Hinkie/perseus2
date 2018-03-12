@@ -9,6 +9,7 @@ use \App\Endereco;
 use \App\User;
 use Hash;
 use DB;
+use Image;
 
 class AlunoController extends Controller
 {
@@ -91,7 +92,6 @@ class AlunoController extends Controller
         return view('layouts.aluno.aluno-contato', compact('aluno'));
     }
 
-    // SELECT * FROM `funcionarios` WHERE YEAR (created_at) = 2018 ORDER BY id DESC
 
     // Cria um usuario
     // Cria um endereco
@@ -104,6 +104,7 @@ class AlunoController extends Controller
 
             'username' => 'required|min:3|max:20|alpha_num|unique:users',
             'password' => 'required|min:3|max:150|confirmed',
+            'foto' => 'nullable|image|max:20480',
             'logradouro' => 'required|min:3|max:150|regex:/^[\pL\s\-]+$/u',
             'numero' => 'required|digits_between:1,10',
             'complemento' => 'nullable|max:150',
@@ -149,6 +150,37 @@ class AlunoController extends Controller
             'UF' => request('UF'),
             'cep' => request('cep')
         ]);
+
+        //Matricula
+        $now = new \DateTime('now');
+        $mes = $now->format('m');
+        $ano = $now->format('Y');
+
+        if ($mes == 12) 
+        {
+            $ano++; 
+        }
+
+        $count = Aluno::where('created_at', 'LIKE', $ano . '%')->count();
+
+        if ($count == 0) 
+        {
+            $matricula = "$ano"."000001";
+        } 
+
+        else 
+        {
+        $ultima_matricula = Aluno::all()->last()->matricula;
+
+        $ultima_matricula = intval($ultima_matricula);
+
+        $ultima_matricula++;
+
+        $matricula = strval($ultima_matricula);
+        
+        }
+        //Foto
+        $img = Image::make(request('foto'))->resize(354, 472)->encode('data-url');
         
         $aluno = new \App\Aluno;
         
@@ -156,6 +188,8 @@ class AlunoController extends Controller
             'nome' => request('nome'),
             'sobrenome' => request('sobrenome'),
             'user_id' => $result_user->id,
+            'matricula' => $matricula,
+            'foto' => $img,
             'data_nascimento' => request('data_nascimento'),
             'genero' => request('genero'),
             'naturalidade' => request('naturalidade'),
@@ -187,6 +221,7 @@ class AlunoController extends Controller
 
             'username' => 'required|min:3|max:20|alpha_num|distinct',
             'new_password' => 'nullable|min:3|max:150|confirmed',
+            'foto' => 'nullable|image|max:20480',
             'logradouro' => 'required|min:3|max:150|regex:/^[\pL\s\-]+$/u',
             'numero' => 'required|digits_between:1,10',
             'complemento' => 'nullable|max:150',
@@ -233,7 +268,18 @@ class AlunoController extends Controller
             'UF' => request('UF'),
             'cep' => request('cep')
         ]);
-            
+        
+        if (is_null(request('foto')) == 'true') 
+        {
+           $img = Image::make(request('foto'))->resize(354, 472)->encode('data-url');
+
+           $img = Image::make(request('foto'))->resize(354, 472)->encode('data-url');
+           
+           $aluno->foto = $img;
+           
+           $aluno->save();
+        }
+
         $aluno->update([
             'nome' => request('nome'),
             'sobrenome' => request('sobrenome'),

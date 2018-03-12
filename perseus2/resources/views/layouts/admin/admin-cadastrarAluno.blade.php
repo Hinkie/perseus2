@@ -2,7 +2,7 @@
 @section('conteudo')
 
 	<div class="container">
-		<form method="POST" action="/admin/aluno">
+		<form method="POST" action="/admin/aluno"  enctype="multipart/form-data" >
 			{{ csrf_field() }}
 			<div class="form-row">
 				<div class="form-group col-md-6 {{ $errors->has('nome') ? ' has-error' : '' }}">
@@ -69,7 +69,7 @@
 			{{-- endereco --}}
 			<div class="form-row">
 				<div class="form-group col-md-5 {{ $errors->has('logradouro') ? ' has-error' : '' }}">
-					<label>Endereço*</label>
+					<label>Logradouro*</label>
 					<input type="text"  class="form-control" id="logradouro"  name="logradouro"  value="{{ old('logradouro') }}" required>
 				</div>
 				<div class="form-group col-md-1 {{ $errors->has('numero') ? ' has-error' : '' }}">
@@ -139,6 +139,10 @@
 				<div class="form-group col-md-3 {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
 					<label>Confirmação da senha*</label>
 					<input type="password"  class="form-control" id="password_confirmation"  name="password_confirmation"  value="{{ old('password_confirmation') }}" required>
+				</div>
+				<div class="form-group col-md-3 {{ $errors->has('') ? ' has-error' : '' }}">
+					<label>Foto</label>
+					<input type="file" name="foto" id="foto">
 				</div>
 				<div class="form-group col-md-12">
 			        <p>*=Campos Obrigatórios</p>

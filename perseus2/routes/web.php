@@ -49,6 +49,8 @@ Route::group(['middleware' => ['auth','roles:admin']], function () {
     Route::patch('/admin/alunos/editar/{aluno}', 'AlunoController@update');
     Route::patch('/admin/telefones/editar/{telefone}', 'TelefoneController@update');
 
+    Route::post('/admin/foto', 'AdminController@foto');
+
 });
 
 //Grupo de rotas referentes aos alunos.

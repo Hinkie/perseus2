@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use DB;
 
 class CreateAluno extends Migration
 {
@@ -17,6 +18,7 @@ class CreateAluno extends Migration
             
             $table->increments('id');
             $table->integer('user_id');
+            $table->integer('matricula');
             $table->string('nome');
             $table->string('sobrenome');
             $table->string('data_nascimento',12);
@@ -41,6 +43,8 @@ class CreateAluno extends Migration
 
         });
     }
+
+    DB::statement("ALTER TABLE alunos ADD foto LONGBLOB NULL");
 
     /**
      * Reverse the migrations.

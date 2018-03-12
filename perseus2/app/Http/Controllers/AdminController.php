@@ -14,16 +14,39 @@ use App\Aluno;
 use App\Titulo;
 use App\Curso;
 use DB;
+use Image;
 
 class AdminController extends Controller
 {	
 
-	public function teste() 
-	{ 	
-	
-		return redirect()->route($funcao);
-        //aaaaa
-	}
+    public function teste() 
+    { 	
+
+    $aluno = Aluno::find(1);
+     
+
+    return view('layouts.teste',compact('aluno'));
+    }
+
+    public function foto() 
+    {    
+        
+        $this->validate(request(),[ 
+
+            'foto' => 'nullable|image|max:20480',
+
+        ]);   
+
+        $img = Image::make(request('foto'))->resize(354, 472)->encode('data-url');
+        
+        $aluno = Aluno::find(1);
+
+        $aluno->foto = $img;
+
+        $aluno->save();
+
+       return redirect('/teste');
+    }
 
 	//Funcionarios
     public function cadastrarFuncionario() 

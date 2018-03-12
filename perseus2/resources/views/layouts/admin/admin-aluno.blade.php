@@ -3,11 +3,14 @@
 
 	<div class="container">
 			<div class="form-row">
-				<div class="form-group col-md-6 ">
+				<div class="form-group col-md-2 ">
+					<img src="{{$aluno->foto}}" height="140px">
+				</div>
+				<div class="form-group col-md-5 ">
 					<label>Nome</label>
 					<input type="text"  class="form-control" id="nome"   value="{{ $aluno->nome }}" disabled name="nome">
 				</div>
-				<div class="form-group col-md-6 ">
+				<div class="form-group col-md-5 ">
 					<label>Sobrenome</label>
 					<input type="text"  class="form-control" id="sobrenome"   value="{{  $aluno->sobrenome }}" disabled name="sobrenome">
 				</div>
@@ -58,7 +61,7 @@
 			{{-- endereco --}}
 			<div class="form-row">
 				<div class="form-group col-md-5 ">
-					<label>Endereço</label>
+					<label>Logradouro</label>
 					<input type="text"  class="form-control" id="logradouro"  disabled name="logradouro"  value="{{ $aluno->endereco->logradouro }}">
 				</div>
 				<div class="form-group col-md-1 ">
@@ -118,6 +121,10 @@
 				<div class="form-group col-md-3 ">
 					<label>Usuario</label>
 					<input type="text"  class="form-control" id="userdisabled name"   value="{{ $aluno->usuario->username }}" disabled name="userdisabled name">
+				</div>
+				<div class="form-group col-md-3 {{ $errors->has('matricula') ? ' has-error' : '' }}">
+					<label>Matricula</label>
+					<input type="text"  class="form-control" id="matricula"  name="matricula"  value="{{ $aluno->matricula }}" disabled>
 				</div>
 				<div class="form-group col-md-12">
 				    <a href="/admin/alunos/editar/{{$aluno->id}}">
