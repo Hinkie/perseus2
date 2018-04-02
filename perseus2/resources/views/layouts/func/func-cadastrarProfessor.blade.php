@@ -1,8 +1,8 @@
-@extends('layouts.admin.admin-master')
+@extends('layouts.func.func-master')
 @section('conteudo')
 
 	<div class="container">
-		<form method="POST" action="/admin/professor">
+		<form method="POST" action="/funcionario/professor">
 			{{ csrf_field() }}
 			<div class="form-row">
 				<div class="form-group col-md-6 {{ $errors->has('nome') ? ' has-error' : '' }}">

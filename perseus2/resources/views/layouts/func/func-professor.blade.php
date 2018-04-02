@@ -1,4 +1,4 @@
-@extends('layouts.admin.admin-master')
+@extends('layouts.func.func-master')
 @section('conteudo')
 
 	<div class="container">
@@ -124,7 +124,7 @@
 				</div>
 
 				<div class="form-group col-md-12">
-				    <a href="/admin/professores/editar/{{$professor->id}}">
+				    <a href="/funcionario/professores/editar/{{$professor->id}}">
 				        <button type="submit" class="btn btn-primary" >
 				        	Editar
 				        </button>

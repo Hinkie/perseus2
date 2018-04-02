@@ -1,8 +1,8 @@
-@extends('layouts.admin.admin-master')
+@extends('layouts.func.func-master')
 
 @section('conteudo')
 
-<form action="/admin/professores/busca" method="POST" role="search">
+<form action="/funcionario/professores/busca" method="POST" role="search">
     {{ csrf_field() }}
     <div class="ui input">
         <input type="text" class="form-control" name="busca"

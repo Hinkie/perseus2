@@ -2,17 +2,106 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use \App\Funcionario;
-use \App\Endereco;
-use \App\User;
+use Illuminate\Support\Facades\Auth;
+use App\Funcionario;
+use App\Funcao;
+use App\Status;
+use App\StatusAluno;
+use App\EstadoCivil;
+use App\Professor;
+use App\Aluno;
+use App\Titulo;
+use App\Curso;
+use App\Calendario;
+use Config;
+use Image;
 use Hash;
 use DB;
 
 class FuncionarioController extends Controller
 {
-	
+		//Professores
+	    public function cadastrarProfessor() 
+	    { 	
+	    	$titulo = Titulo::all();
+
+	    	return view('layouts.func.func-cadastrarProfessor', compact('titulos'));
+	    }
+
+		public function professores() 
+		{ 	
+			$professores = Professor::orderBy('nome', 'ASC')->paginate(25);
+
+			return view('layouts.func.func-professores', compact('professores'));
+		}
+
+		public function professor(Professor $professor) 
+		{	
+			return view('layouts.func.func-professor', compact('professor'));
+		}
+
+		public function buscaProfessor() 
+		{	
+			$busca = request('busca');
+
+			$professores = Professor::where('nome','LIKE',"%{$busca}%")
+							->orWhere('sobrenome','LIKE',"%{$busca}%")->get();
+				
+			return view('layouts.func.func-professoresResultado', compact('professores'));
+		}
+
+		public function editarProfessor(Professor $professor) 
+		{	
+			$titulos = Titulo::all();
+
+			$status = Status::all();
+
+			$estado_civil = EstadoCivil::all();
+
+			return view('layouts.func.func-editarProfessor', compact('professor','estado_civil','titulos','status'));
+		}
+
+		//Alunos
+	  	public function cadastrarAluno() 
+	   { 	
+	   	$cursos = Curso::orderBy('nome', 'ASC')->get();
+
+	   	return view('layouts.func.func-cadastrarAluno',compact('cursos'));
+	   }
+
+	   	public function alunos() 
+	   	{ 	
+	   		$alunos = Aluno::orderBy('nome', 'ASC')->paginate(25);
+
+	   		return view('layouts.func.func-alunos', compact('alunos'));
+	   	}
+
+	   	public function aluno(Aluno $aluno) 
+	   	{	
+	   		return view('layouts.func.func-aluno', compact('aluno'));
+	   	}
+
+	   	public function buscaAluno() 
+	   	{		
+	   		$busca = request('busca');
+
+	   		$alunos = Aluno::where('nome','LIKE',"%{$busca}%")
+	   						->orWhere('sobrenome','LIKE',"%{$busca}%")->get();
+	   			
+	   		return view('layouts.func.func-alunosResultado', compact('alunos'));
+	   	}
+
+	   	public function editarAluno(Aluno $aluno) 
+	   	{	
+	   		$status = StatusAluno::all();
+
+	   		$cursos = Curso::orderBy('nome', 'ASC')->get();
+	   		
+	   		$estado_civil = EstadoCivil::all();
+
+	   		return view('layouts.func.func-editarAluno', compact('aluno','estado_civil','cursos','status'));
+	   	}
 	// Cria um usuario
 	// Cria um endereco
 	// Criar um funcionario usando os ids do usuario e endereco criados
@@ -94,7 +183,7 @@ class FuncionarioController extends Controller
 	
 		flash('Cadastro efetuado com sucesso');
 
-		return redirect('/admin/cadastrarFuncionario');
+		return redirect('/func/cadastrarFuncionario');
 
 		}
 
@@ -176,7 +265,7 @@ class FuncionarioController extends Controller
 	
 		flash('Edição efetuada com sucesso');
 
-		return redirect('/admin/funcionarios/'.$funcionario->id);
+		return redirect('/func/funcionarios/'.$funcionario->id);
 	
 	}
 }

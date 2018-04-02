@@ -19,12 +19,11 @@ class CreateCalendario extends Migration {
             $table->integer('year');
             $table->integer('month');
             $table->integer('day');
-            $table->integer('week');
             $table->string('day_name', 9);
             $table->string('month_name', 9);
-            $table->char('feriado_flag', 1)->nullable()->default('f');
-            $table->char('dia_letivo_flag', 1)->nullable()->default('f');
-            $table->char('fds_flag', 1)->nullable()->default('f');
+            $table->boolean('feriado_flag')->nullable()->default('0');
+            $table->boolean('fds_flag')->nullable()->default('0');
+            $table->boolean('dia_letivo_flag')->nullable()->default('0');
             $table->unique(['year','month','day'], 'td_ymd_idx');
         });
     }

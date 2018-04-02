@@ -1,8 +1,8 @@
-@extends('layouts.admin.admin-master')
+@extends('layouts.func.func-master')
 
 @section('conteudo')
 
-<form action="/admin/funcionarios/busca" method="POST" role="search">
+<form action="/funcionario/alunos/busca" method="POST" role="search">
     {{ csrf_field() }}
     <div class="ui input">
         <input type="text" class="form-control" name="busca"
@@ -14,39 +14,38 @@
     </div>
 </form>
 
-@if (count($funcionarios)== 0)
+@if (count($alunos)== 0)
     <h3>Nenhum resultado encontrado</h3>
 @else
-     <table class="ui celled table">
-      <thead>
-          <tr>
-              <th>Nome</th>
-              <th>Funcão</th>
-              <th>E-mail</th>
-              <th>Telefone fixo</th>
-              <th>Celular</th>
-              <th>Status</th>
-          </tr>
-      </thead>
-      <tbody>
-      @foreach ($funcionarios as $funcionario)
-         @if ($funcionario->status_id == 1)
-             <tr class="negative">
-         @elseif ($funcionario->status_id == 2)
-             <tr class="warning">
-         @else
-            <tr>
-         @endif
-                  <td>{{$funcionario->nome}} {{$funcionario->sobrenome}}</td>
-                  <td>{{$funcionario->funcao->nome}}</td>
-                  <td>{{$funcionario->email}}</td>
-                  <td>{{$funcionario->fixo}}</td> 
-                  <td>{{$funcionario->celular}}</td>  
-                  <td>{{$funcionario->status->nome}}</td>     
-          </tr>
-          @endforeach 
-      </tbody>
-    </table>
-@endif
-
-@endsection
+        <table class="ui celled table">
+         <thead>
+             <tr>
+                 <th>Nome</th>
+                 <th>Curso</th>
+                 <th>E-mail</th>
+                 <th>Telefone fixo</th>
+                 <th>Celular</th>
+                 <th>Status</th>
+             </tr>
+         </thead>
+         <tbody>
+         @foreach ($alunos as $aluno)
+            @if ($aluno->status_id == 1)
+                <tr class="negative">
+            @elseif ($aluno->status_id == 2)
+                <tr class="warning">
+            @else
+               <tr>
+            @endif
+                     <td><a href="/funcionario/alunos/{{$aluno->id}}">{{$aluno->nome}} {{$aluno->sobrenome}}</a></td>
+                     <td>{{$aluno->curso->nome}}</td>
+                     <td>{{$aluno->email}}</td>
+                     <td>{{$aluno->fixo}}</td> 
+                     <td>{{$aluno->celular}}</td>  
+                     <td>{{$aluno->status_aluno->nome}}</td>     
+             </tr>
+        @endforeach 
+         </tbody>
+     </table>
+    @endif
+    @endsection

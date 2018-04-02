@@ -1,4 +1,4 @@
-@extends('layouts.admin.admin-master')
+@extends('layouts.func.func-master')
 
 @section('conteudo')
 <div class="ui grid">
@@ -19,7 +19,7 @@
                         <td>{{$telefone->numero}}</td>
                         <td>{{$telefone->ramal}}</td> 
                         <td>
-                           <a href="/admin/telefones/editar/{{$telefone->id}}">
+                           <a href="/funcionario/telefones/editar/{{$telefone->id}}">
                                <button class="ui icon button">
                                    <i class="pe-7s-refresh"></i>
                                </button>
@@ -44,7 +44,7 @@
                   @endforeach
                 @endif
 
-                <form method="POST" action="/admin/telefones">
+                <form method="POST" action="/funcionario/telefones">
                     {{ csrf_field() }}
                     <div class="form-group col-md-6 {{ $errors->has('local') ? ' has-error' : '' }}">
                                 <label>Local</label>

@@ -32,7 +32,7 @@
 <div class="wrapper">
     {{-- Barra Lateral --}}
     <div class="sidebar" data-color="purple"  data-image="assets/img/sidebar-5.jpg">
-    	<div class="sidebar-wrapper">
+        <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://cnecsan.cnec.br/" class="simple-text">
                     <img class="moveimage" src="{{ asset('images/cnec-small.png') }}" width="34" height="40" alt="Logo Cnec">
@@ -40,50 +40,55 @@
             </div>
 
             <ul class="nav">
-                <li {{{ (Request::is('funcionario/professores') ? 'class=active' : '') }}}>
-                    <a href="/funcionario/professores">
-                        <i class="pe-7s-user"></i>
-                        <p>Professores</p>
+                <li {{{ (Request::is('professor/calendario') ? 'class=active' : '') }}}>
+                    <a href="/professor/calendario">
+                        <i class="pe-7s-date"></i>
+                        <p>Calendário</p>
                     </a>
                 </li>
-                <li {{{ (Request::is('admin/alunos') ? 'class=active' : '') }}}>
-                    <a href="/funcionario/alunos">
-                        <i class="pe-7s-study"></i>
-                        <p>Alunos</p>
+                <li {{{ (Request::is('professor/frequencia') ? 'class=active' : '') }}}>
+                    <a href="/professor/frequencia">
+                       <i class="pe-7s-study"></i>
+                       <p>Frequência</p>
+                    </a>
+                <li {{{ (Request::is('professor/arquivos') ? 'class=active' : '') }}}>
+                    <a href="/professor/arquivos">
+                        <i class="pe-7s-cloud-download"></i>
+                        <p>Arquivos</p>
                     </a>
                 </li>
-                <li {{{ (Request::is('admin/cadastrarProfessor') ? 'class=active' : '') }}}>
-                    <a href="/funcionario/cadastrarProfessor">
-                        <i class="pe-7s-add-user"></i>
-                        <p>cadastrar Professor</p>
+                <li {{{ (Request::is('professor/tarefas') ? 'class=active' : '') }}}>
+                    <a href="/professor/tarefas">
+                        <i class="pe-7s-albums"></i>
+                        <p>Tarefas</p>
                     </a>
                 </li>
-                <li {{{ (Request::is('admin/cadastrarAluno') ? 'class=active' : '') }}}>
-                    <a href="/funcionario/cadastrarAluno">
-                        <i class="pe-7s-users"></i>
-                        <p>cadastrar Aluno</p>
+                <li {{{ (Request::is('professor/email-alunos') ? 'class=active' : '') }}}>
+                    <a href="/professor/email-alunos">
+                        <i class="pe-7s-mail"></i>
+                        <p>E-mail alunos</p>
                     </a>
                 </li>
-                <li {{{ (Request::is('admin/memorandos') ? 'class=active' : '') }}}>
-                    <a href="/funcionario/memorandos">
+                <li {{{ (Request::is('professor/memorandos') ? 'class=active' : '') }}}>
+                    <a href="/professor/memorandos">
                         <i class="pe-7s-note"></i>
                         <p>Memorandos</p>
                     </a>
                 </li>
-                <li {{{ (Request::is('admin/telefones') ? 'class=active' : '') }}}>
-                    <a href="/funcionario/telefones">
+                <li {{{ (Request::is('professor/relatorios') ? 'class=active' : '') }}}>
+                    <a href="/professor/relatorios">
+                        <i class="pe-7s-note2"></i>
+                        <p>Relatórios</p>
+                    </a>
+                </li>
+                <li {{{ (Request::is('professor/telefones') ? 'class=active' : '') }}}>
+                    <a href="/professor/telefones">
                         <i class="pe-7s-phone"></i>
                         <p>Telefones</p>
                     </a>
                 </li>
-               <li {{{ (Request::is('admin/relatorios') ? 'class=active' : '') }}}>
-                   <a href="/funcionario/relatorios">
-                       <i class="pe-7s-note2"></i>
-                       <p>Relatórios</p>
-                   </a>
-                </li>
-                <li {{{ (Request::is('admin/ferramentas') ? 'class=active' : '') }}}>
-                    <a href="/funcionario/ferramentas">
+                <li {{{ (Request::is('professor/ferramentas') ? 'class=active' : '') }}}>
+                    <a href="/professor/ferramentas">
                         <i class="pe-7s-tools"></i>
                         <p>Ferramentas</p>
                     </a>
@@ -95,9 +100,9 @@
                          <p>Teste</p>
                      </a>
                   </li>
-				
+                
             </ul>
-    	</div>
+        </div>
     </div>
 
     <div class="main-panel">
@@ -115,15 +120,15 @@
                 <!-- Dropbown do logout -->
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-	                        <li class="dropdown">
-	                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	                                    <p>
-											{{Auth::User()->funcionario->nome}}
-											<b class="caret"></b>
-										</p>
-	                              </a>
-	                              <ul class="dropdown-menu">
-	                                <li>
+                            <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <p>
+                                            {{Auth::User()->professor->nome}}
+                                            <b class="caret"></b>
+                                        </p>
+                                  </a>
+                                  <ul class="dropdown-menu">
+                                    <li>
                                         {{-- <a href="/logout">Logout</a> --}}
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -133,9 +138,9 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
-	                              </ul>
-	                        </li>
-						<li class="separator hidden-lg"></li>
+                                  </ul>
+                            </li>
+                        <li class="separator hidden-lg"></li>
                     </ul>
                 </div>
             </div>
@@ -150,24 +155,24 @@
 
     <!--   Core JS Files   -->
     <script src="{{ asset('js/jquery.3.2.1.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="{{ asset('js/light-bootstrap-dashboard.js?v=1.4.0') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/light-bootstrap-dashboard.js?v=1.4.0') }}" type="text/javascript"></script>
 
-	<!-- Light Bootstrap Table DEMO methods e funcoes usadas  -->
-	<script src="{{ asset('js/demo.js') }}" type="text/javascript"></script>
+    <!-- Light Bootstrap Table DEMO methods e funcoes usadas  -->
+    <script src="{{ asset('js/demo.js') }}" type="text/javascript"></script>
 
     {{-- Datatables --}}
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 
-	<script type="text/javascript">
-    	$(document).ready(function(){
+    <script type="text/javascript">
+        $(document).ready(function(){
 
-        	demo.initChartist();
+            demo.initChartist();
 
-    	});
-	</script>
+        });
+    </script>
 
 </html>

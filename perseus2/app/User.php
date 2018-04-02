@@ -64,6 +64,15 @@ class User extends Authenticatable
 
     public function aluno() 
     {  
-        return $this->hasOne('App\Aluno','id','user_id');
+        return $this->belongsTo('App\Aluno','id','user_id');
+    }
+
+    public function funcionario() 
+    {
+        return $this->belongsTo('App\Funcionario','id','user_id');
+    }
+    public function professor() 
+    {
+        return $this->belongsTo('App\Professor','id','user_id');
     }
 }

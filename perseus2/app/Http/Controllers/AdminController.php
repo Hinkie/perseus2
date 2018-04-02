@@ -13,6 +13,8 @@ use App\Professor;
 use App\Aluno;
 use App\Titulo;
 use App\Curso;
+use App\Calendario;
+use Config;
 use DB;
 use Image;
 
@@ -21,11 +23,7 @@ class AdminController extends Controller
 
     public function teste() 
     { 	
-
-    $aluno = Aluno::find(1);
-     
-
-    return view('layouts.teste',compact('aluno'));
+  
     }
 
     public function foto() 
@@ -157,7 +155,7 @@ class AdminController extends Controller
    		$alunos = Aluno::where('nome','LIKE',"%{$busca}%")
    						->orWhere('sobrenome','LIKE',"%{$busca}%")->get();
    			
-   		return view('layouts.admin.admin-funcionariosResultado', compact('alunos'));
+   		return view('layouts.admin.admin-alunosResultado', compact('alunos'));
    	}
 
    	public function editarAluno(Aluno $aluno) 
@@ -170,4 +168,9 @@ class AdminController extends Controller
 
    		return view('layouts.admin.admin-editarAluno', compact('aluno','estado_civil','cursos','status'));
    	}
+
+    public function ferramentas() 
+    {  
+        return view('layouts.admin.admin-ferramentas');
+    }
 }

@@ -1,8 +1,8 @@
-@extends('layouts.admin.admin-master')
+@extends('layouts.func.func-master')
 @section('conteudo')
 
 	<div class="container">
-		<form method="POST" action="/admin/alunos/editar/{{$aluno->id}}">
+		<form method="POST" action="/funcionario/alunos/editar/{{$aluno->id}}">
 			{{ csrf_field() }}
 			{{ method_field('PATCH') }}
 			<div class="form-row">

@@ -1,4 +1,4 @@
-@extends('layouts.admin.admin-master')
+@extends('layouts.func.func-master')
 
 @section('conteudo')
 
@@ -33,7 +33,7 @@
        @else
           <tr>
        @endif
-                <td><a href="/admin/professores/{{$professor->id}}">{{$professor->titulo->sigla}}{{$professor->nome}} {{$professor->sobrenome}}</a></td>
+                <td><a href="/funcionario/professores/{{$professor->id}}">{{$professor->titulo->sigla}}{{$professor->nome}} {{$professor->sobrenome}}</a></td>
                 <td>{{$professor->email}}</td>
                 <td>{{$professor->tel_interno}}</td> 
                 <td>{{$professor->fixo}}</td> 

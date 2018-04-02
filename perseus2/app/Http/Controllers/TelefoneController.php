@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Telefone;
+use Redirecionador;
 
 class TelefoneController extends Controller
 {
@@ -12,7 +13,14 @@ class TelefoneController extends Controller
     {    
         $telefones = Telefone::orderBy('local', 'ASC')->paginate(25);
 
-        return view('layouts.admin.admin-telefones', compact('telefones'));
+        if (Auth::user()->role_id == 1) 
+        {
+            return view('layouts.admin.admin-telefones', compact('telefones'));
+        } 
+        else 
+        {
+            return view('layouts.func.func-telefones', compact('telefones'));
+        } 
     }
 
     public function editarTelefone(Telefone $telefone) 
@@ -42,7 +50,6 @@ class TelefoneController extends Controller
     	$funcao = Auth::user()->role->name;
 
     	return redirect('/'.$funcao.'/telefones');
-   
     }
 
     public function update(Telefone $telefone) 

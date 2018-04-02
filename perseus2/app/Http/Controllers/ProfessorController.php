@@ -13,6 +13,10 @@ use DB;
 class ProfessorController extends Controller
 {
 	
+	public function inicio() 
+	{	
+		return view('layouts.prof.prof-inicio');
+	}
 	// Cria um usuario
 	// Cria um endereco
 	// Criar um professor usando os ids do usuario e endereco criados
